@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Table tennis form</title>
+    <link th:href="@{/css/welcome.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+    <a th:href="@{/}" class="logo" style="text-align:center">
+        Score-Keeper
+    </a>
+
+</nav>
+<br>
+<br>
+
+<div class="container">
+    <form th:action="@{/saveteam}" th:object="${teamdetail}" method="post">
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example1">Enter Team Name</label>
+            <input type="text" id="form1Example1" class="form-control" th:field="*{teamName}" />
+
+            <span style="color:#dc3545;font-style:italic;" th:if="${#fields.hasErrors('teamName')}" th:errors="*{teamName}">Please enter name of player in between 4 to 20 character</span>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-success btn-block">Submit</button>
+    </form>
+    <br>
+    <a th:href="@{/teamlist}" class="showTeam btn btn-outline-warning btn-block">Show Team List</a>
+</div>
+</body>
+</html>

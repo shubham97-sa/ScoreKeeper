@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Table tennis form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+<form th:action="@{/saveplayer}" th:object="${playerdetail}" method="post" >
+    <div class="form-outline mb-4">
+        <label class="form-label">Enter Player Name</label>
+        <input type="text" class="form-control" th:field="*{playerName}" >
+        <span style="color:#dc3545;font-style:italic;" th:if="${#fields.hasErrors('playerName')}" th:errors="*{playerName}">Please enter name of team in between 4 to 20 character</span>
+       <br>
+        <br>
+        <label class="form-label">Enter Team Id</label>
+        <input th:field="*{teamId}" type="number" class="form-control">
+        <br>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-success btn-block">Submit</button>
+        <br>
+
+        <a th:href="@{/teamlist}" class="showTeam btn btn-outline-warning btn-block">Back To Team List</a>
+
+    </div>
+</form>
+
+</div>
+</body>
+</html>

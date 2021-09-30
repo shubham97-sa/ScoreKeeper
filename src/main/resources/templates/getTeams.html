@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Team ID</th>
+            <th>Team Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teamDetail : ${teamDetailList}">
+            <td th:text="${teamDetail.id}"></td>
+            <td th:text="${teamDetail.teamName}"></td>
+            <td><a th:href="@{/teamId/{id}(id=${teamDetail.id})}" class="btn btn-primary">Add Player</a>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-3">
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <a th:href="@{/Games/addTeamForm}"> <button class="btn btn-info btn-block">Add Team</button></a>
+    <hr>
+    <a th:href="@{/tt_scorekeeper}"> <button class="btn btn-info btn-block">ScoreBoard</button></a>
+</div>
+
+</body>
+</html>
