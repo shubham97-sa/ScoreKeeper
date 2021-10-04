@@ -16,8 +16,8 @@
         <span style="color:#dc3545;font-style:italic;" th:if="${#fields.hasErrors('playerName')}" th:errors="*{playerName}">Please enter name of team in between 4 to 20 character</span>
        <br>
         <br>
-        <label class="form-label">Enter Team Id</label>
-        <input th:field="*{teamId}" type="number" class="form-control">
+<!--        <label class="form-label">Enter Team Id</label>-->
+        <input th:field="*{teamId}" type="hidden" class="form-control">
         <br>
         <!-- Submit button -->
         <button type="submit" class="btn btn-outline-success btn-block">Submit</button>

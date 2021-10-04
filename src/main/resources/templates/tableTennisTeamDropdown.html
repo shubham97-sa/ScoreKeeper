@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Score-Keeper</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+<form>
+    <form th:action="@{/select_teams}" th:object="${teamdetail}" method="Get">
+        <label>Select First Team</label>
+        <select  >
+            <option selected>Select Team A</option>
+
+            <option
+                    th:each="teamdetail :${dropdownList}"
+                    th:value="${teamdetail.id}"
+                    th:text="${teamdetail.teamName}"></option>
+        </select>
+        <br>
+        <label>Select Second Team</label>
+        <select>
+            <option selected>Select Team B</option>
+
+            <option th:each="teamdetail :${dropdownList}"
+                    th:value="${teamdetail.id}"
+                    th:text="${teamdetail.teamName}"></option>
+        </select>
+        <br>
+        <label>Select  Team A Player</label>
+        <select>
+            <option selected>Select Player </option>
+
+            <option th:each="playerdetail :${dropdownListPlayers}"
+                    th:value="${playerdetail.id}"
+                    th:text="${playerdetail.playerName}"></option>
+        </select>
+        <br>
+        <label>Select  Team B Player</label>
+        <select>
+            <option selected>Select Player</option>
+
+            <option th:each="playerdetail :${dropdownListPlayers}"
+                    th:value="${playerdetail.id}"
+                    th:text="${playerdetail.playerName}"></option>
+        </select>
+        <br>
+        <input type="submit">
+    </form>
+</div>
+
+</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -51,5 +52,15 @@ private PlayerDetailRepository playerDetailRepository;
     public void savePlayerDetails(PlayerDetail playerDetail) {
         this.playerDetailRepository.save(playerDetail);
 
+    }
+
+    @Override
+    public List<TeamDetail> getTeams() {
+        return teamDetailRepository.findAll();
+    }
+
+    @Override
+    public List<PlayerDetail> getPlayers() {
+        return playerDetailRepository.findAll();
     }
 }

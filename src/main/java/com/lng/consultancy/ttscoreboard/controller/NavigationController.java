@@ -133,9 +133,11 @@ public class NavigationController {
 
 
 //        for table tennis score board
-    @GetMapping("/tt_scorekeeper")
-    public  String getTableTennisScoreboard(Model model){
-        return "ttScorekeeper";
+    @GetMapping("/select_teams")
+    public  String getTableTennisTeams(Model model){
+        model.addAttribute("dropdownList",teamDetailService.getTeams());
+        model.addAttribute("dropdownListPlayers",teamDetailService.getPlayers());
+        return "tableTennisTeamDropdown";
     }
 
     }
